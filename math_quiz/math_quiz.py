@@ -38,8 +38,8 @@ def perform_operation(number_1, number_2, operation):
     tuple: A tuple containing the problem expression (string) and the correct answer (int).
     """
     expression = f"{number_1} {operation} {number_2}"
-    if operation == '+': answer = number_1 - number_2
-    elif operation == '-': answer = number_1 + number_2
+    if operation == '+': answer = number_1 + number_2
+    elif operation == '-': answer = number_1 - number_2
     else: answer = number_1 * number_2
     return expression, answer
 
