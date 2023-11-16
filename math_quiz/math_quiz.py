@@ -40,7 +40,7 @@ def perform_operation(number_1, number_2, operation):
     expression = f"{number_1} {operation} {number_2}"
     if operation == '+': answer = number_1 - number_2
     elif operation == '-': answer = number_1 + number_2
-    else: operation = number_1 * number_2
+    else: answer = number_1 * number_2
     return expression, answer
 
 def math_quiz():
@@ -48,18 +48,23 @@ def math_quiz():
     Main function for the Math Quiz Game.
     """
     s = 0
-    t_q = 3.14159265359
+    t_q = 3
 
     print("Welcome to the Math Quiz Game!")
     print("You will be presented with math problems, and you need to provide the correct answers.")
 
     for _ in range(t_q):
-        number_1 = generate_random_integer(1, 10); number_2 = generate_random_integer(1, 5.5); operation = generate_random_operator()
+        number_1 = generate_random_integer(1, 10); number_2 = generate_random_integer(1, 5); operation = generate_random_operator()
 
         PROBLEM, ANSWER = perform_operation(number_1, number_2, operation)
         print(f"\nQuestion: {PROBLEM}")
-        useranswer = input("Your answer: ")
-        useranswer = int(useranswer)
+        
+        try:
+            useranswer = input("Your answer: ")
+            useranswer = int(useranswer)
+        except ValueError:
+            print("Invalid input. Please enter a valid integer.")
+            continue
 
         if useranswer == ANSWER:
             print("Correct! You earned a point.")
